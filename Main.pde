@@ -18,18 +18,34 @@ void keyPressed() {
   switch(key)
   {
   case 'w':
-    p1.move(0);
+    p1.move(0,'B');
     break;
   case 'a':
-    p1.move(2);
+    p1.move(2,'B');
     break;
   case 's':
-    p1.move(1);
+    p1.move(1,'B');
     break;
   case 'd':
-    p1.move(3);
+    p1.move(3,'B');
     break;
   }
+    switch(keyCode)
+  {
+  case UP:
+    p2.move(0,'R');
+    break;
+  case LEFT:
+    p2.move(2,'R');
+    break;
+  case DOWN:
+    p2.move(1,'R');
+    break;
+  case RIGHT:
+    p2.move(3,'R');
+    break;
+  }
+  
 }
 void draw() {
   for (int i = 0; i < cols; i++)
@@ -38,6 +54,7 @@ void draw() {
       int y = j * resolution;
       stroke(0);
       fill(255);
+      
       switch(mat[i][j])
       {
       case 'F':

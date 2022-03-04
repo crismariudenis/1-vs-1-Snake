@@ -9,14 +9,15 @@ class Snake
     c=C;
     v.add(new Pair(X, Y));
   }
-  void move(int dir)
+  void move(int dir,char C)
   {
     Pair head=new Pair(v.get(0).x, v.get(0).y);
     head.x+=dx[dir];
     head.y+=dy[dir];
     v.add(0, head);
-    mat[(v.get(v.size()-1).x)%cols][(v.get(v.size()-1).y)%rows]=' ';
-    mat[(head.x)%cols][(head.y)%rows]='B';
+    mat[(v.get(v.size()-1).x+cols)%cols][(v.get(v.size()-1).y+rows)%rows]=' ';
+    
+    mat[(head.x+cols)%cols][(head.y+rows)%rows]=C;
     v.remove(v.get(v.size()-1));
   }
 }
