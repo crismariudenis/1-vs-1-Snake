@@ -14,7 +14,7 @@ void setup() {
   mat[cols-1][rows/2]='R';
 }
 void keyPressed() {
- // print(key);
+  // print(key);
   switch(key)
   {
   case 'w':
@@ -52,6 +52,6 @@ void draw() {
       default :
         fill(255);
       }
-      rect(x, y, resolution, resolution);
+      rect(y, x, resolution, resolution);
     }
 }

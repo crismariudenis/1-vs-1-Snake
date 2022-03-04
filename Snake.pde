@@ -14,10 +14,9 @@ class Snake
     Pair head=new Pair(v.get(0).x, v.get(0).y);
     head.x+=dx[dir];
     head.y+=dy[dir];
-    v.add(0,head);
-    //// Todo: Swap x,y
-    mat[v.get(v.size()-1).x][v.get(v.size()-1).y]=' ';
-    mat[head.x][head.y]='B';
+    v.add(0, head);
+    mat[(v.get(v.size()-1).x)%cols][(v.get(v.size()-1).y)%rows]=' ';
+    mat[(head.x)%cols][(head.y)%rows]='B';
     v.remove(v.get(v.size()-1));
   }
 }
