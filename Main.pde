@@ -4,6 +4,7 @@ int resolution=40;
 int cols, rows;
 char gameEnded=' ';
 char[][]mat;
+int dir1=0, dir2=3;
 void setup() {
   size(800, 800);
   cols=width/resolution;
@@ -17,48 +18,62 @@ void setup() {
   mat[1][1]='B';
   mat[rows-2][cols-2]='R';
   f=new Food();
+  frameRate(8);
 }
 void keyPressed() {
   // print(key);
   switch(key)
   {
   case 'w':
-    p1.move(0, 'B');
+    dir1=0;
     break;
   case 'a':
-    p1.move(2, 'B');
+    dir1=2;
     break;
   case 's':
-    p1.move(1, 'B');
+    dir1=3;
     break;
   case 'd':
-    p1.move(3, 'B');
+    dir1=1;
     break;
   }
   switch(keyCode)
   {
   case UP:
-    p2.move(0, 'R');
+    dir2=0;
     break;
   case LEFT:
-    p2.move(2, 'R');
+    dir2=2;
     break;
   case DOWN:
-    p2.move(1, 'R');
+    dir2=3;
     break;
   case RIGHT:
-    p2.move(3, 'R');
+    dir2=1;
     break;
   }
 }
 void draw() {
+  p2.move(dir2, 'R');
+  p1.move(dir1, 'B');
   if (gameEnded!=' ')
   {
     println(gameEnded, "loses");
+    textSize(128);
+    String S="";
+    if(gameEnded=='R'){
+      S="Blue wins";
+      fill(p2.c);
+    }
+     if(gameEnded=='B'){
+      S="Red wins";
+      fill(p1.c);
+    }  
+    text(S,100,100);
     noLoop();
   } else
-    for (int i = 0; i < cols; i++)
-      for (int j = 0; j < rows; j++) {
+    for (int i = 0; i < rows; i++)
+      for (int j = 0; j < cols; j++) {
         int x = i * resolution;
         int y = j * resolution;
         stroke(0);

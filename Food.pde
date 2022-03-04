@@ -5,7 +5,7 @@ class Food
 
   Food()
   {
-    while (x==-1 || mat[x][y]!=' ')
+    while (mat[x][y]!=' ')
     {
       x=(int)random(rows);
       y=(int)random(cols);
