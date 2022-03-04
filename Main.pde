@@ -9,17 +9,14 @@ void setup() {
   cols=width/resolution;
   rows=height/resolution;
   mat=new char[rows][cols];
-  p1=new Snake(#FF0000, 0, rows/2);
-  p2=new Snake(#0000FF, cols-1, rows/2);
+  p1=new Snake(#FF0000, 1, 1);
+  p2=new Snake(#0000FF, rows-2, cols-2);
   for (int i=0; i<rows; i++)
     for (int j=0; j<cols; j++)
       mat[i][j]=' ';
-  mat[0][rows/2]='B';
-  mat[cols-1][rows/2]='R';
+  mat[1][1]='B';
+  mat[rows-2][cols-2]='R';
   f=new Food();
-
-  
-  print('S');
 }
 void keyPressed() {
   // print(key);
