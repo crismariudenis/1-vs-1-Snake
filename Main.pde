@@ -1,4 +1,5 @@
 Snake p1, p2;
+Food f;
 int resolution=40;
 int cols, rows;
 char gameEnded=' ';
@@ -7,15 +8,18 @@ void setup() {
   size(800, 800);
   cols=width/resolution;
   rows=height/resolution;
+  mat=new char[rows][cols];
   p1=new Snake(#FF0000, 0, rows/2);
   p2=new Snake(#0000FF, cols-1, rows/2);
-  mat=new char[rows][cols];
   for (int i=0; i<rows; i++)
     for (int j=0; j<cols; j++)
       mat[i][j]=' ';
-  mat[1][1]='F';
   mat[0][rows/2]='B';
   mat[cols-1][rows/2]='R';
+  f=new Food();
+
+  
+  print('S');
 }
 void keyPressed() {
   // print(key);
@@ -62,7 +66,6 @@ void draw() {
         int y = j * resolution;
         stroke(0);
         fill(255);
-
         switch(mat[i][j])
         {
         case 'F':
