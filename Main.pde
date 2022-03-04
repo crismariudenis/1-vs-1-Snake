@@ -77,7 +77,6 @@ void draw() {
         default :
           fill(255);
         }
-
         rect(y, x, resolution, resolution);
       }
 }

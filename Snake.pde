@@ -12,10 +12,15 @@ class Snake
   }
   void move(int dir, char C)
   {
+    println(lastD);
     Pair head=new Pair(v.get(0).x, v.get(0).y);
+
+    if (v.size()>=2 && head.x+dx[dir]==v.get(1).x && head.y+dy[dir]==v.get(1).y)
+    {
+      dir=lastD;
+    }
     head.x+=dx[dir];
     head.y+=dy[dir];
-    lastD=dir;
     v.add(0, head);
     switch(mat[(head.x+cols)%cols][(head.y+rows)%rows])
     {
@@ -30,6 +35,7 @@ class Snake
       gameEnded=C;
     }
     mat[(head.x+cols)%cols][(head.y+rows)%rows]=C;
+    lastD=dir;
   }
   void eat(Food f)
   {
